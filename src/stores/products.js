@@ -12,6 +12,10 @@ export const useProductsStore = defineStore(
       { id: 5, name: 'Orangensaft', quantity: 2, active: true, dueDate: null },
       { id: 6, name: 'Schokolade', quantity: 3, active: true, dueDate: null }
     ])
+    function findProductById(id) {
+      const product = products.value.find((p) => p.id === id)
+      return product
+    }
 
     function addProduct(productName) {
       const newProduct = {
@@ -27,15 +31,33 @@ export const useProductsStore = defineStore(
       products.value = products.value.filter((product) => product.id !== id)
     }
 
-    const activeProductsCount = computed(
-      () => products.value.filter((product) => product.active).length
-    )
+    function toggleProductActive(id) {
+      const product = findProductById(id)
+      if (product) {
+        product.active = !product.active
+      }
+    }
 
-    const inactiveProductsCount = computed(
-      () => products.value.filter((product) => !product.active).length
-    )
+    function setQuantity(id, quantity) {
+      const product = findProductById(id)
+      if (product) {
+        product.quantity = quantity
+      }
+    }
 
-    return { products, addProduct, removeProduct, activeProductsCount, inactiveProductsCount }
+    const activeProducts = computed(() => products.value.filter((product) => product.active))
+
+    const inactiveProducts = computed(() => products.value.filter((product) => !product.active))
+
+    return {
+      products,
+      addProduct,
+      removeProduct,
+      toggleProductActive,
+      setQuantity,
+      activeProducts,
+      inactiveProducts
+    }
   },
   {
     persist: true
