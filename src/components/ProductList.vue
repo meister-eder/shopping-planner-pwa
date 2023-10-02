@@ -21,7 +21,7 @@
           >
           <template v-slot:append="{ select }">
             <v-list-item-action end>
-              <v-icon @click="store.removeProduct(product.id)">mdi-delete</v-icon>
+              <v-icon color="red" @click="deleteProduct(product)">mdi-delete</v-icon>
             </v-list-item-action>
           </template>
         </v-list-item>
@@ -44,6 +44,12 @@ const store = useProductsStore()
 
 const toggleActive = (id) => {
   store.toggleProductActive(id)
+}
+
+const deleteProduct = (product) => {
+  if (window.confirm(`Are you sure you want to delete '${product.name}'?`)) {
+    store.removeProduct(product.id)
+  }
 }
 
 const setQuantityByOne = (product, value) => {
