@@ -8,7 +8,8 @@
     "preview": "vite preview",
     "test:unit": "vitest",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "generate-pwa-assets": "pwa-assets-generator --preset minimal public/demo_icon.png"
   },
   "dependencies": {
     "pinia": "^2.1.6",
@@ -21,6 +22,7 @@
   "devDependencies": {
     "@mdi/font": "^7.2.96",
     "@rushstack/eslint-patch": "^1.3.3",
+    "@vite-pwa/assets-generator": "^0.0.10",
     "@vitejs/plugin-vue": "^4.3.4",
     "@vue/eslint-config-prettier": "^8.0.0",
     "@vue/test-utils": "^2.4.1",
