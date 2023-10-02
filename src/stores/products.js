@@ -4,14 +4,7 @@ import { defineStore } from 'pinia'
 export const useProductsStore = defineStore(
   'products',
   () => {
-    const products = ref([
-      { id: 1, name: 'Milch', quantity: 2, active: true, dueDate: null },
-      { id: 2, name: 'Brot', quantity: 1, active: true, dueDate: null },
-      { id: 3, name: 'Eier', quantity: 12, active: true, dueDate: null },
-      { id: 4, name: 'Kaffee', quantity: 1, active: true, dueDate: null },
-      { id: 5, name: 'Orangensaft', quantity: 2, active: true, dueDate: null },
-      { id: 6, name: 'Schokolade', quantity: 3, active: true, dueDate: null }
-    ])
+    const products = ref([])
     function findProductById(id) {
       const product = products.value.find((p) => p.id === id)
       return product
