@@ -1,7 +1,7 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
-export const useStore = defineStore(
+export const useProductsStore = defineStore(
   'products',
   () => {
     const products = ref([
@@ -13,8 +13,14 @@ export const useStore = defineStore(
       { id: 6, name: 'Schokolade', quantity: 3, active: true, dueDate: null }
     ])
 
-    function addProduct(product) {
-      products.value.push(product)
+    function addProduct(productName) {
+      const newProduct = {
+        id: new Date().toString(),
+        name: productName,
+        quantity: 1,
+        active: true
+      }
+      products.value.push(newProduct)
     }
 
     function removeProduct(id) {
