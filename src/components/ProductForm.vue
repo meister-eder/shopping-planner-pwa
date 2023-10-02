@@ -1,9 +1,9 @@
 <template>
   <div>
     <v-form ref="addProductForm" validate-on="submit" @submit.prevent="submitForm">
-      <v-container>
+      <v-container fluid>
         <v-row>
-          <v-col cols="12" sm="8" md="6">
+          <v-col cols="8">
             <v-text-field
               v-model="productName"
               required
@@ -13,7 +13,7 @@
             ></v-text-field>
           </v-col>
 
-          <v-col cols="12" sm="4" md="6">
+          <v-col cols="4">
             <v-btn color="primary" type="submit" class="">Add Product</v-btn>
           </v-col>
         </v-row>

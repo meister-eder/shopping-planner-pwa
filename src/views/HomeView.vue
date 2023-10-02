@@ -1,7 +1,9 @@
 <template>
   <main>
-    <ProductForm />
-    <ProductList />
+    <v-container>
+      <ProductForm />
+      <ProductList />
+    </v-container>
   </main>
 </template>
 <script setup>
