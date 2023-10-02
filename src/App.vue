@@ -46,7 +46,8 @@ const userStore = useUserStore()
 </script>
 
 <style>
-#app {
+#app,
+body {
   background-color: white;
 }
 </style>

@@ -1,10 +1,10 @@
 <template>
   <v-list-item>
-    <template v-slot:prepend="{ isActive }">
+    <template v-slot:prepend>
       <v-list-item-action start>
         <v-checkbox-btn
           @click="toggleActive(product.id)"
-          :model-value="product.active"
+          :model-value="!product.active"
         ></v-checkbox-btn>
       </v-list-item-action>
     </template>
@@ -14,7 +14,7 @@
       {{ product.quantity }}
       <v-icon @click="setQuantityByOne(product, +1)">mdi-plus</v-icon></v-list-item-subtitle
     >
-    <template v-slot:append="{ select }">
+    <template v-slot:append>
       <v-list-item-action end>
         <v-icon color="red" @click="deleteProduct(product)">mdi-delete</v-icon>
       </v-list-item-action>
