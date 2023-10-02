@@ -1,9 +1,25 @@
 <template>
   <main>
     <ProductForm />
-    <ProductList :products="store.activeProducts" />
-    <v-divider></v-divider>
-    <ProductList :products="store.inactiveProducts" />
+    <v-expansion-panels variant="accordion" multiple>
+      <v-expansion-panel>
+        <v-expansion-panel-title>
+          <h4>Active Products: {{ store.activeProducts.length }}</h4>
+        </v-expansion-panel-title>
+        <v-expansion-panel-text>
+          <ProductList :products="store.activeProducts" />
+        </v-expansion-panel-text>
+      </v-expansion-panel>
+
+      <v-expansion-panel>
+        <v-expansion-panel-title>
+          Inactive Products: {{ store.inactiveProducts.length }}
+        </v-expansion-panel-title>
+        <v-expansion-panel-text>
+          <ProductList :products="store.inactiveProducts" />
+        </v-expansion-panel-text>
+      </v-expansion-panel>
+    </v-expansion-panels>
   </main>
 </template>
 <script setup>
