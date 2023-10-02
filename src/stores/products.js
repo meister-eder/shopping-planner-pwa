@@ -1,10 +1,12 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
+import { v4 as uuidv4 } from 'uuid'
 
 export const useProductsStore = defineStore(
   'products',
   () => {
     const products = ref([])
+
     function findProductById(id) {
       const product = products.value.find((p) => p.id === id)
       return product
@@ -12,7 +14,7 @@ export const useProductsStore = defineStore(
 
     function addProduct(productName) {
       const newProduct = {
-        id: new Date().toString(),
+        id: uuidv4(),
         name: productName,
         quantity: 1,
         active: true
@@ -25,10 +27,13 @@ export const useProductsStore = defineStore(
     }
 
     function toggleProductActive(id) {
-      const product = findProductById(id)
-      if (product) {
-        product.active = !product.active
-      }
+      products.value = products.value.map((product) => {
+        if (product.id === id) {
+          return { ...product, active: !product.active }
+        } else {
+          return product
+        }
+      })
     }
 
     function setQuantity(id, quantity) {
